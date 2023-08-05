@@ -1,9 +1,10 @@
 local home_dir=os.getenv("HOME")
 local zprint_version = '1.2.7'
-local zprint_path = home_dir .. "/zprintl-" .. zprint_version
+local zprint_file = "zprintl-" .. zprint_version
 if vim.fn.has('macunix') then
-	zprint_path = home_dir .. "/zprintm-" .. zprint_version
+	zprint_file = "zprintm-" .. zprint_version
 end
+local zprint_path = home_dir .. "/" .. zprint_file
 
 function InstallZprintFiler()
 	local f=io.open(zprint_path)
@@ -21,7 +22,7 @@ function InstallZprintFiler()
 	        print("zprint exists " .. zprint_path)
 	else
 	        print("zprint does not exists at " .. zprint_path .. " installing")
-		local command = "cd " .. home_dir .. " && curl -LJO https://github.com/kkinnear/zprint/releases/download/" .. zprint_version .. "/zprintm-".. zprint_version .. " && chmod +x " .. zprint_path
+		local command = "cd " .. home_dir .. " && curl -LJO https://github.com/kkinnear/zprint/releases/download/" .. zprint_version .. "/" .. zprint_file .. " && chmod +x " .. zprint_path
 		-- local command = "cd " .. home_dir .. " && echo 'this is test' > nvim.test" 
 
 		print("Command is " .. command)
