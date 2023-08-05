@@ -2,11 +2,14 @@ local home_dir=os.getenv("HOME")
 local zprint_version = '1.2.7'
 local zprint_path = home_dir .. "/zprintl-" .. zprint_version
 if vim.fn.has('macunix') then
-zprint_path = home_dir .. "/zprintm-" .. zprint_version
+	zprint_path = home_dir .. "/zprintm-" .. zprint_version
 end
 
 function InstallZprintFiler()
 	local f=io.open(zprint_path)
+	print("setting key with " .. zprint_path)
+	vim.keymap.set('v', '<leader>cf',  ":'<,'>!" .. zprint_path .. "<cr>")
+	vim.keymap.set('n', '<leader>cx',  ":'<,'>!somethingdump<cr>")
 
 	if vim.fn.executable('wget') ~= 1 then
 		error('wget is not installed. please install first')
@@ -33,8 +36,11 @@ function InstallZprintFiler()
 end
 
 
-vim.api.nvim_create_user_command('InstallZprint', InstallZprintFiler, {})
-vim.keymap.set('v', '<leader>cf',  ":'<,'>!" .. zprint_path .. "<cr>")
 
--- run it on install
-vim.fn.execute('InstallZprint')
+local M = {}
+
+M.setup = InstallZprintFiler
+
+return M
+
+
