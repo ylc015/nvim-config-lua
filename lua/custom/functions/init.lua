@@ -1,10 +1,11 @@
+local home_dir=os.getenv("HOME")
+local zprint_version = '1.2.7'
+local zprint_path = home_dir .. "/zprintl-" .. zprint_version
+if vim.fn.has('macunix') then
+zprint_path = home_dir .. "/zprintm-" .. zprint_version
+end
+
 function InstallZprintFiler()
-	local home_dir=os.getenv("HOME")
-	local zprint_version = '1.2.7'
-	local zprint_path = home_dir .. "/zprintl-" .. zprint_version
-	if vim.fn.has('macunix') then
-		zprint_path = home_dir .. "/zprintm-" .. zprint_version
-	end
 	local f=io.open(zprint_path)
 
 	if vim.fn.executable('wget') ~= 1 then
