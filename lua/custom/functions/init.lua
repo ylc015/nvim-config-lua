@@ -28,13 +28,12 @@ function InstallZprintFiler()
 			print("failed to run command " .. err)
 		end
 	end
-	vim.keymap.set('v', '<leader>cf',  ":'<,'>!" .. zprint_path .. "<cr>")
 
 end
 
 
 vim.api.nvim_create_user_command('InstallZprint', InstallZprintFiler, {})
-
+vim.keymap.set('v', '<leader>cf',  ":'<,'>!" .. zprint_path .. "<cr>")
 
 -- run it on install
 vim.fn.execute('InstallZprint')
