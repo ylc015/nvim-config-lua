@@ -277,6 +277,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 -- git related
 vim.keymap.set('n', '<leader>gs', ":Git<CR>", {})
+vim.keymap.set('n', '<leader>gp', ":Git push<CR>", {})
 
 
 -- FTerm stuff
