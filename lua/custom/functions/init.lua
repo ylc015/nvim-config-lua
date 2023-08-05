@@ -1,7 +1,7 @@
 local home_dir=os.getenv("HOME")
 local zprint_version = '1.2.7'
 local zprint_file = "zprintl-" .. zprint_version
-if vim.fn.has('macunix') then
+if vim.fn.has('macunix') == 1 then
 	zprint_file = "zprintm-" .. zprint_version
 end
 local zprint_path = home_dir .. "/" .. zprint_file
