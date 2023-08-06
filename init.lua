@@ -385,6 +385,10 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('<leader>sr', vim.lsp.buf.server_ready, '[S]erver [R]eader')
 
+  -- custom function
+  nmap('<leader>ln', vim.diagnostic.goto_next, '[L]SP [N]ext')
+  nmap('<leader>lp', vim.diagnostic.goto_prev, '[L]SP [P]revious')
+
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
