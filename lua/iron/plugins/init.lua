@@ -47,6 +47,12 @@ return {
 						return { 'cabal', 'v2-repl', filename }
 					end
 				},
+				zsh = {
+					command = function(meta)
+						local filename = vim.api.nvim_buf_get_name(meta.current_bufnr)
+						return { 'cabal', 'v2-repl', filename }
+					end
+				},
 				python = {
 					command = function(meta)
 						local filename = vim.api.nvim_buf_get_name(meta.current_bufnr)
