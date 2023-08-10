@@ -1,3 +1,4 @@
+require "math"
 return {
 	'Vigemus/iron.nvim',
 	config = function()
@@ -10,12 +11,28 @@ return {
 					sh = {
 						-- Can be a table or a function that
 						-- returns a table (see below)
+						command = { "bash" }
+					},
+					zsh = {
+						-- Can be a table or a function that
+						-- returns a table (see below)
 						command = { "zsh" }
 					}
 				},
 				-- How the repl window will be displayed
 				-- See below for more information
-				repl_open_cmd = require('iron.view').bottom(40),
+				-- repl_open_cmd = require('iron.view').center("30%", 20),
+				repl_open_cmd = require('iron.view').offset {
+					width = 60,
+					height = math.floor(vim.api.nvim_win_get_height(0) * 0.75),
+					-- `view.helpers.flip` will subtract the size of the REPL
+					-- window from the total dimension, then apply an offset.
+					-- Effectively, it flips the top/left to bottom/right orientation
+					-- v
+					--
+					w_offset = require('iron.view').helpers.flip(2),
+					h_offset = require('iron.view').helpers.proportion(0.5)
+				}
 			},
 			-- Iron doesn't set keymaps by default anymore.
 			-- You can set them here or manually add keymaps to the functions in iron.core
