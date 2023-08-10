@@ -32,6 +32,7 @@ require('lazy').setup({
   -- Clojure related
   'Olical/conjure',
   'guns/vim-sexp',
+  'tpope/vim-sexp-mappings-for-regular-people',
 
   -- Vim editing
   'tpope/vim-surround',
