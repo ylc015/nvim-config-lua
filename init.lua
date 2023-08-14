@@ -34,7 +34,10 @@ require('lazy').setup({
   {
     'guns/vim-sexp',
     config = function()
-      vim.g.sexp_enable_insert_mode_mappings = 1
+      vim.g.sexp_mappings['sexp_swap_list_backward'] = ''
+      vim.g.sexp_mappings['sexp_swap_list_forward'] = ''
+      vim.g.sexp_mappings['sexp_swap_element_backward'] = ''
+      vim.g.sexp_mappings['sexp_swap_element_forward'] = ''
     end
   },
   'tpope/vim-sexp-mappings-for-regular-people',
