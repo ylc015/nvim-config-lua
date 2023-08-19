@@ -502,6 +502,7 @@ local servers = {
   -- gopls = {},
   pyright = {},
   clojure_lsp = {},
+  clangd = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
