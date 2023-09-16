@@ -3,10 +3,6 @@ vim.g.maplocalleader = ' '
 
 -- tree like config
 vim.g.netrw_liststyle = 3
--- open file in vertical
-vim.g.netrw_browse_split = 2
--- file browswer takes 75$ of the whole window
-vim.g.netrw_winsize = 75
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
