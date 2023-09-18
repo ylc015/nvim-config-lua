@@ -60,6 +60,8 @@ require('lazy').setup({
 
   'mfussenegger/nvim-dap',
 
+  'rafcamlet/nvim-luapad',
+
   {
     'rcarriga/nvim-dap-ui',
     dependencies = 'mfussenegger/nvim-dap',
@@ -369,6 +371,11 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+-- LuaPad: Evaluaing
+vim.keymap.set('n', '<leader>li', require('luapad').init, { desc = '[L]ua [P]ad' })
+vim.keymap.set('n', '<leader>lr', ":LuaRun<CR>", { desc = '[L]ua [R]un' })
+
 
 -- git related
 vim.keymap.set('n', '<leader>gs', ":Git<CR>", {})
