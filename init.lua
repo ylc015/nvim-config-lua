@@ -62,6 +62,8 @@ require('lazy').setup({
 
   'rafcamlet/nvim-luapad',
 
+  'ggandor/leap.nvim',
+
   {
     'rcarriga/nvim-dap-ui',
     dependencies = 'mfussenegger/nvim-dap',
@@ -614,5 +616,7 @@ cmp.setup {
 }
 
 require('nvim-dap.settings').setup()
+
+require('leap').add_default_mappings()
 
 require('custom.functions.init').setup()
