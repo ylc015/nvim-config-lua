@@ -64,6 +64,8 @@ require('lazy').setup({
 
   'ggandor/leap.nvim',
 
+  'ggandor/leap-spooky.nvim',
+
   {
     'rcarriga/nvim-dap-ui',
     dependencies = 'mfussenegger/nvim-dap',
@@ -618,5 +620,7 @@ cmp.setup {
 require('nvim-dap.settings').setup()
 
 require('leap').add_default_mappings()
+
+require('leap-spooky').setup()
 
 require('custom.functions.init').setup()
