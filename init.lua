@@ -377,7 +377,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- bb related
-vim.keymap.set('n', '<leader>sn', ":vs term://bb nrepl:start --with-test-deps -e dev-owl", { desc = '[S]tart [N]repl' })
+vim.keymap.set('n', '<leader>cn', ":vs term://bb nrepl:start --with-test-deps -e dev-owl", { desc = '[C]onnect [N]repl' })
 
 -- LuaPad: Evaluaing
 vim.keymap.set('n', '<leader>li', require('luapad').init, { desc = '[L]ua [P]ad' })
