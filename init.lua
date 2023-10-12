@@ -368,6 +368,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Search [G]it [B]ranches' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 -- TODO duplicated. but Conjure maps to the same key  sf
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
@@ -387,7 +388,6 @@ vim.keymap.set('n', '<leader>lr', ":LuaRun<CR>", { desc = '[L]ua [R]un' })
 -- git related
 vim.keymap.set('n', '<leader>gs', ":Git<CR>", {})
 vim.keymap.set('n', '<leader>gp', ":Git push<CR>", {})
-vim.keymap.set('n', '<leader>gb', ":Git branch<CR>", {})
 
 
 -- FTerm stuff
