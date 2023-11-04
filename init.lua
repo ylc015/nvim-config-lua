@@ -66,6 +66,8 @@ require('lazy').setup({
 
   'ggandor/leap-spooky.nvim',
 
+  'dccsillag/magma-nvim',
+
   {
     'rcarriga/nvim-dap-ui',
     dependencies = 'mfussenegger/nvim-dap',
