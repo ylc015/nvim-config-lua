@@ -66,7 +66,7 @@ require('lazy').setup({
 
   'ggandor/leap-spooky.nvim',
 
-  'dccsillag/magma-nvim',
+  'luk400/vim-jukit',
 
   {
     'rcarriga/nvim-dap-ui',
@@ -264,6 +264,17 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+  },
+
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
