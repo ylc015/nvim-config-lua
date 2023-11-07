@@ -66,6 +66,8 @@ require('lazy').setup({
 
   'ggandor/leap-spooky.nvim',
 
+  'preservim/nerdtree',
+
   -- TODO temporary disable 'luk400/vim-jukit',
 
   {
@@ -413,6 +415,10 @@ vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>'
 vim.keymap.set('n', '<leader>,', ':e $MYVIMRC<CR>')
 vim.keymap.set('n', '<leader>sm', ':luafile $MYVIMRC<CR>', { desc = '[S]ource [M]YVIMC' })
 vim.keymap.set('n', '-', ':Ex<CR>')
+
+-- NERDtree
+vim.keymap.set('n', '<leader>tt', ':NERDTreeToggle<CR>')
+vim.keymap.set('n', '<leader>tn', ':NERDTreeFocus<CR>')
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
