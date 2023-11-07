@@ -66,7 +66,7 @@ require('lazy').setup({
 
   'ggandor/leap-spooky.nvim',
 
-  'luk400/vim-jukit',
+  -- TODO temporary disable 'luk400/vim-jukit',
 
   {
     'rcarriga/nvim-dap-ui',
