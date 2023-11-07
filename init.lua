@@ -396,6 +396,10 @@ vim.keymap.set('n', '<leader>sj', require('telescope.builtin').jumplist, { desc 
 
 -- bb related
 vim.keymap.set('n', '<leader>cn', ":vs term://bb nrepl:start --with-test-deps -e dev-owl", { desc = '[C]onnect [N]repl' })
+vim.keymap.set('n', '<leader>cj',
+  ":vs term://clj -Sdeps '{:deps {nrepl/nrepl {:mvn/version \"LATEST\"}, cider/cider-nrepl {:mvn/version,\"0.27.4\"}}}' -M:dev -m nrepl.cmdline --middleware \"[cider.nrepl/cider-middleware]\"",
+  { desc = '[C]onnect CL[J] repl' })
+
 
 -- LuaPad: Evaluaing
 vim.keymap.set('n', '<leader>li', require('luapad').init, { desc = '[L]ua [P]ad' })
