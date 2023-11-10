@@ -399,7 +399,7 @@ vim.keymap.set('n', '<leader>lr', ":LuaRun<CR>", { desc = '[L]ua [R]un' })
 
 -- git related
 vim.keymap.set('n', '<leader>gs', ":Git<CR>", {})
-vim.keymap.set('n', '<leader>gp', ":Git push<CR>", {})
+vim.keymap.set('n', '<leader>gp', ":Git -c push.default=current push<CR>", {})
 
 
 -- FTerm stuff
