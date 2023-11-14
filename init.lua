@@ -68,6 +68,8 @@ require('lazy').setup({
 
   'preservim/nerdtree',
 
+  'mbbill/undotree',
+
   -- TODO temporary disable 'luk400/vim-jukit',
 
   {
