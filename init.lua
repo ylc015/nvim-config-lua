@@ -449,6 +449,12 @@ require('nvim-treesitter.configs').setup {
         ['if'] = '@function.inner',
         ['ac'] = '@class.outer',
         ['ic'] = '@class.inner',
+        ['ai'] = '@assignment.inner',
+        ['il'] = '@assignment.lhs',
+        ['ao'] = '@assignment.outer',
+        ['ik'] = '@assignment.rhs',
+        ['ak'] = '@statement.outer',
+        ['au'] = '@return.outer',
       },
     },
     move = {
@@ -482,6 +488,23 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+-- Make tree sitter movement repeatable
+local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+
+-- Repeat movement with ; and ,
+-- ensure ; goes forward and , goes backward regardless of the last direction
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+-- vim way: ; goes to the direction you were moving.
+-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+
+-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
