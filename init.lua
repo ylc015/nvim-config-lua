@@ -704,6 +704,7 @@ require("neotest").setup({
     })
   }
 })
+vim.keymap.set('n', '<leader>ts', require('neotest').summary.toggle, { desc = '[T]est [S]ummary' })
 
 
 require('nvim-dap.settings').setup()
