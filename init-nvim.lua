@@ -422,7 +422,9 @@ vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- Neovim setting
-vim.keymap.set('n', '<leader>,', ':e $MYVIMRC<CR>')
+local local_config = vim.fn.stdpath('config') .. '/init-nvim.lua'
+
+vim.keymap.set('n', '<leader>,', string.format(':e %s<CR>', local_config))
 vim.keymap.set('n', '<leader>sm', ':luafile $MYVIMRC<CR>', { desc = '[S]ource [M]YVIMC' })
 vim.keymap.set('n', '-', ':Ex<CR>')
 
