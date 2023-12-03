@@ -1,15 +1,30 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-print('in VScosde nvim', 0)
-
 local vscode = require('vscode-neovim')
 vim.notify = vscode.notify
 vim.notify("Neovim: Using Vscode config")
 
-local cmd = 'calva.evaluateEnclosingForm'
+-- Minmicking Conjure
+vim.keymap.set('n', '<leader>ee',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.evaluateEnclosingForm'),
+  { desc = 'Eval current form' })
+vim.keymap.set('v', '<leader>E',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.evaluateSelection'),
+  { desc = 'Eval selected current form' })
+vim.keymap.set('n', '<leader>ece',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.evaluateSelectionAsComment'),
+  { desc = 'Eval selected and comment' })
+vim.keymap.set('n', '<leader>er',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.evaluateCurrentTopLevelForm'),
+  { desc = 'Eval selected and comment' })
+vim.keymap.set('n', '<leader>eb',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.loadFile'),
+  { desc = 'Eval selected and comment' })
+  
 
-vim.keymap.set('n', '<leader>ee', string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", cmd))
+vim.keymap.set('n', '<leader>nc', string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.jackIn'),
+  { desc = 'Jack in' })
 
 local local_config = vim.fn.stdpath('config') .. '/init-vscode.lua'
 vim.keymap.set('n', '<leader>,', string.format(':e %s<CR>', local_config))
