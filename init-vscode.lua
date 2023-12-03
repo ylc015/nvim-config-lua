@@ -17,11 +17,27 @@ vim.keymap.set('n', '<leader>ece',
   { desc = 'Eval selected and comment' })
 vim.keymap.set('n', '<leader>er',
   string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.evaluateCurrentTopLevelForm'),
-  { desc = 'Eval selected and comment' })
+  { desc = 'Eval selected top level' })
 vim.keymap.set('n', '<leader>eb',
   string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.loadFile'),
-  { desc = 'Eval selected and comment' })
+  { desc = 'Eval whole file' })
 
+
+-- Git related (Source Control)
+vim.keymap.set('n', '<leader>gs',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'workbench.scm.focus'),
+  { desc = 'Focus on Git' })
+
+
+-- File Ex
+vim.keymap.set('n', '<leader>tt',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'workbench.files.action.focusFilesExplorer'),
+  { desc = 'Focus File Explorer' })
+  
+
+vim.keymap.set('n', '<leader><esc>',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'workbench.action.focusActiveEditorGroup'),
+  { desc = 'Focus active editor' })
 
 vim.keymap.set('n', '<leader>nc', string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'calva.jackIn'),
   { desc = 'Jack in' })
