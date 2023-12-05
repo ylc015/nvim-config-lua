@@ -27,13 +27,19 @@ vim.keymap.set('n', '<leader>eb',
 vim.keymap.set('n', '<leader>gs',
   string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'workbench.scm.focus'),
   { desc = 'Focus on Git' })
+vim.keymap.set('n', '<leader>gb',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'git.checkout'),
+  { desc = 'Git checkout' })
+vim.keymap.set('n', '<leader>gp',
+  string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'git.push'),
+  { desc = 'Git push' })
 
 
 -- File Ex
 vim.keymap.set('n', '<leader>tt',
   string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'workbench.files.action.focusFilesExplorer'),
   { desc = 'Focus File Explorer' })
-  
+
 
 vim.keymap.set('n', '<leader><esc>',
   string.format("<Cmd>lua require('vscode-neovim').call('%s')<CR>", 'workbench.action.focusActiveEditorGroup'),
