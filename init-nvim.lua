@@ -57,9 +57,6 @@ require('lazy').setup({
   'nvim-lua/plenary.nvim',
 
   'numToStr/Comment.nvim',
-
-  'mfussenegger/nvim-dap',
-
   'rafcamlet/nvim-luapad',
 
   'ggandor/leap.nvim',
@@ -71,25 +68,7 @@ require('lazy').setup({
   'mbbill/undotree',
 
   -- TODO temporary disable 'luk400/vim-jukit',
-
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = 'mfussenegger/nvim-dap',
-    config = function()
-      local dap = require('dap')
-      local dapui = require('dapui')
-      dapui.setup()
-      dap.listeners.after.event_initialized['dapui_config'] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated['dapui_config'] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited['dapui_config'] = function()
-        dapui.close()
-      end
-    end
-  },
+  --
 
 
   {
@@ -102,53 +81,6 @@ require('lazy').setup({
   require 'noice.plugins',
 
   require 'iron.plugins',
-
-  {
-    'rest-nvim/rest.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require("rest-nvim").setup({
-        -- Open request results in a horizontal split
-        result_split_horizontal = true,
-        -- Keep the http file buffer above|left when split horizontal|vertical
-        result_split_in_place = false,
-        -- Encode URL before making request
-        encode_url = true,
-        -- Highlight request on run
-        highlight = {
-          enabled = true,
-          timeout = 150,
-        },
-        result = {
-          -- toggle showing URL, HTTP info, headers at top the of result window
-          show_url = true,
-          -- show the generated curl command in case you want to launch
-          -- the same request via the terminal (can be verbose)
-          show_curl_command = true,
-          show_http_info = true,
-          show_headers = true,
-          -- executables or functions for formatting response body [optional]
-          -- set them to false if you want to disable them
-          formatters = {
-            json = "jq",
-            html = function(body)
-              return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-            end
-          },
-        },
-        -- Jump to request line on run
-        jump_to_request = false,
-        env_file = '.env',
-        custom_dynamic_variables = {},
-        yank_dry_run = true,
-      })
-      vim.keymap.set('n', '<space>rg', '<Plug>RestNvim', { desc = "[R]est [G]et" })
-      vim.keymap.set('n', '<space>rp', '<Plug>RestNvimPreview', { desc = "[R]est [P]review" })
-    end
-  },
-
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -260,6 +192,21 @@ require('lazy').setup({
   },
 
   {
+    'chipsenkbeil/distant.nvim',
+    branch = 'v0.3',
+    config = function()
+      require('distant'):setup()
+    end
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp"
+  },
+
+  {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     config = function()
@@ -276,20 +223,15 @@ require('lazy').setup({
     opts = {} -- this is equalent to setup({}) function
   },
 
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-neotest/neotest-python",
-    }
-  },
-
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
+
+
+
+  -- temporary disable this pacakge because it needs   'nvim-neotest/nvim-nio', ?
+  -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -676,40 +618,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
-require("neotest").setup({
-  adapters = {
-    require("neotest-python")({
-      -- Extra arguments for nvim-dap configuration
-      -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-      dap = { justMyCode = false },
-      -- Command line arguments for runner
-      -- Can also be a function to return dynamic values
-      args = { "--log-level", "DEBUG" },
-      -- Runner to use. Will use pytest if available by default.
-      -- Can be a function to return dynamic value.
-      runner = "pytest",
-      -- Custom python path for the runner.
-      -- Can be a string or a list of strings.
-      -- Can also be a function to return dynamic value.
-      -- If not provided, the path will be inferred by checking for
-      -- virtual envs in the local directory and for Pipenev/Poetry configs
-      -- python = ".venv/bin/python",
-      -- Returns if a given file path is a test file.
-      -- NB: This function is called a lot so don't perform any heavy tasks within it.
-      -- is_test_file = function(file_path)
-      --   ...
-      -- end,
-      -- !!EXPERIMENTAL!! Enable shelling out to `pytest` to discover test
-      -- instances for files containing a parametrize mark (default: false)
-      pytest_discover_instances = true,
-    })
-  }
-})
-vim.keymap.set('n', '<leader>ts', require('neotest').summary.toggle, { desc = '[T]est [S]ummary' })
-
-
-require('nvim-dap.settings').setup()
 
 require('leap').add_default_mappings()
 
